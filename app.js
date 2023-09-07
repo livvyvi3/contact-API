@@ -24,16 +24,24 @@ app.get("/", (req, res) => {
   axios
     .get(`https://api.pipedrive.com/v1/persons?api_token=${pipedriveApiKey}`)
     .then((response) => {
-     
-    const persons = response.data.data; 
+      const persons = response.data.data;
+      const allEmails = [];
 
-    // Extract  name and email from each person
-    const names = persons.map((person) => ({
-      name: person.name,
-      email: person.email,
-    }));
+      // Extract emails from each person
+      for (let i = 0; i < persons.length; i++) {
+        const emailObject = persons[i].email[0];
+        if (emailObject) {
+          const emailValue = emailObject.value;
+          allEmails.push(emailValue);
+        }
+      }
 
-    res.json(names);
+      // Extract names from each person
+      const names = persons.map((person) => ({
+        name: person.name
+      }));
+
+      res.json({ names, emails: allEmails });
     })
     .catch((error) => {
       res.status(500).send("Error fetching data");
@@ -43,3 +51,4 @@ app.get("/", (req, res) => {
 app.listen(PORT, () =>
   console.log(`Server running on port: http://localhost:${PORT}`)
 );
+

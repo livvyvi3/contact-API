@@ -4,21 +4,9 @@ const axios = require("axios");
 const app = express();
 const PORT = 3000;
 
-const pipedriveApiKey = "5371394d33d2c40586b87613c27754b053eea2e1";
+const pipedriveApiKey = "REPLACE_WITH_YOUR_OWN_KEY";
 
-/*
-axios
-.get("https://api.pipedrive.com/v1/persons?api_token=5371394d33d2c40586b87613c27754b053eea2e1")
-.then((result) => {
-  console.log(result.data);
-  app.get('/contacts', (req,res) => {
-    res.send(result.data)
-  });
-})
-.catch((err) => {
-  console.log(err);
-});
-*/
+
 
 app.get("/", (req, res) => {
   axios

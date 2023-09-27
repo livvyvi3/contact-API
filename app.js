@@ -9,8 +9,11 @@ axios
   .get(`https://api.pipedrive.com/v1/persons?api_token=${pipedriveApiKey}`)
   .then((response) => {
     const contactData = response.data.data;
-    const customFieldKeyAccMng = 'customFieldKeyAccMng';
-    const cstmFieldAddress = 'cstmFieldAddress';
+    const customFieldKeyAccMng = '44290adcd518424a6c0be10c17b8f33eb1772264';
+    const cstmFieldAddress = '68cb673c52c6f5143479e1f9d5cf68dcecf0b29e_route';
+    const cstmFieldAge = 'a44cf8ef829eca008a1ff13ed6d06b324552e7a3';
+    const cusFieldCntry = '68cb673c52c6f5143479e1f9d5cf68dcecf0b29e_country';
+
 
   
     contactData.forEach((contact) => {
@@ -18,10 +21,12 @@ axios
       const phone = contact.phone[0] ? contact.phone[0].value : "";
       const firstname = contact.first_name || '';
       const lastname = contact.last_name || '';
+      const country = contact[cusFieldCntry] || '';
+      const account_manager = contact[customFieldKeyAccMng] || '';
+      const address = contact[cstmFieldAddress] || '';
+      const age = contact[cstmFieldAge] || '';
+      
 
-      const country = contact['Add your custome key here'] || '';
-      const account_manager = contact['Add your custome key here'] || '';
-      const address = contact['Add your custome key here'] || '';
       
       const fullname = `${firstname} ${lastname}`;
 
@@ -33,6 +38,7 @@ axios
           country: country,
           account_manager,
           address,
+          age,
         },
       };
       

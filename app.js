@@ -21,10 +21,10 @@ axios
       const phone = contact.phone[0] ? contact.phone[0].value : "";
       const firstname = contact.first_name || '';
       const lastname = contact.last_name || '';
-      const country = contact[cusFieldCntry] || '';
+      //const country = contact[cusFieldCntry] || '';
       const account_manager = contact[customFieldKeyAccMng] || '';
-      const address = contact[cstmFieldAddress] || '';
-      const age = contact[cstmFieldAge] || '';
+      /*const address = contact[cstmFieldAddress] || '';
+      const age = contact[cstmFieldAge] || '';*/
       
 
       
@@ -35,10 +35,10 @@ axios
           firstname: fullname, 
           email,
           phone,
-          country: country,
+         // country: country,
           account_manager,
-          address,
-          age,
+          /*address,
+          age,*/
         },
       };
       
